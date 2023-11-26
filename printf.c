@@ -16,7 +16,7 @@ char buffer[50];
 if (format == NULL)
 {
 write(1,NULL,1);
-return (NULL);
+return (0);
 }
 else
 {
