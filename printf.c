@@ -14,7 +14,6 @@ int _printf(const char *format, ...)
 {
 int count = 0;
 char c;
-char *str;
 int num, len;
 char buffer[20];
 va_list args;
