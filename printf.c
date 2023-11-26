@@ -12,17 +12,17 @@
 */
 int _printf(const char *format, ...)
 {
-va_list args;
-va_start(args, format);
 int count = 0;
 char c;
 char *str;
 int num, len;
 char buffer[20];
+va_list args;
+va_start(args, format);
 while (*format != '\0')
 {
 if (*format == '%') {
-format++;  // Move past the '%'
+format++;
 switch (*format)
 {
 case 'c':
@@ -32,7 +32,7 @@ break;
 case 's':
 {
 *str = va_arg(args, char*);
-count += write(1, str, strlen(str));
+count += write(1, str, _strlen(str));
 break;
 }
 case '%':
@@ -47,16 +47,14 @@ count += write(1, buffer, len);
 break;
 }
 default:
-// Unsupported specifier, ignore it
-count += write(1, format - 1, 2); // Write the '%', and the character following '%'
+count += write(1, format - 1, 2);
 }
 }
 else
 {
-// Regular character, write it to stdout
 count += write(1, format, 1);
 }
-format++;  // Move to the next character in the format string
+format++;
 }
 
 va_end(args);

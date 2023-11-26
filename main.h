@@ -5,5 +5,5 @@
 
 /* Function prototype for _printf */
 int _printf(const char *format, ...);
-
+int _strlen(char *s);
 #endif
