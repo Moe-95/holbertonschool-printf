@@ -1,0 +1,50 @@
+.TH PRINTF 3 "November 2023" "Version 1.0" "User Commands"
+
+.SH NAME
+_printf \- custom print function
+
+.SH SYNOPSIS
+\fB#include \fI<main.h>\fB\fR
+.br
+\fBint _printf(const char *format, ...);\fR
+
+.SH DESCRIPTION
+The \fB_printf\fR function formats and prints data to the standard output stream according to the specified format. The format string is composed of zero or more directives, which are replaced by corresponding arguments.
+
+.PP
+The following conversion specifiers are supported:
+\fB%c\fR - character
+\fB%s\fR - string
+\fB%%\fR - percent
+\fB%d\fR - signed decimal integer
+\fB%i\fR - signed decimal integer
+
+.PP
+This implementation does not handle flag characters, field width, precision, or length modifiers.
+
+.SH RETURN VALUE
+The \fB_printf\fR function returns the number of characters printed (excluding the null byte used to end output to strings).
+
+.SH EXAMPLE
+\fB#include <stdio.h>\fR
+\fB#include "main.h"\fR
+\fB
+int main(void) {\fR
+\fB    int len;\fR
+\fB    len = _printf("Number: %d\n", 42);\fR
+\fB    return 0;\fR
+}\fR
+
+.SH SEE ALSO
+\fBprintf(3)\fR, \fBman(7)\fR
+
+.SH BUGS
+This implementation may not fully replicate the behavior of the standard printf function.
+
+.SH AUTHOR
+Karim Fahs.
+
+.SH COPYRIGHT
+Copyright © 2023 Holberton. This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
