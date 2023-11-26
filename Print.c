@@ -10,7 +10,7 @@
  */
 int _write_char(char c)
 {
-return write(1, &c, 1);
+return (write(1, &c, 1));
 }
 
 /**
@@ -25,13 +25,13 @@ if (str != NULL)
 int len = write(1, str, _strlen(str));
 if (len == -1)
 {
-return -1;
+return (-1);
 }
 return len;
 }
 else
 {
-return write(1, "(null)", 6);
+return (write(1, "(null)", 6));
 }
 }
 
@@ -44,7 +44,7 @@ int _write_int(int num)
 {
 char buffer[50];
 int len = snprintf(buffer, sizeof(buffer), "%d", num);
-return write(1, buffer, len);
+return (write(1, buffer, len));
 }
 
 /**
@@ -55,14 +55,13 @@ return write(1, buffer, len);
 int _printf(const char *format, ...)
 {
 int count = 0;
+
 if (format == NULL)
-{
 return write(1, NULL, 1);
-}
-else
-{
+
 va_list args;
 va_start(args, format);
+
 while (*format != '\0')
 {
 if (*format == '%')
@@ -96,7 +95,8 @@ count += write(1, format, 1);
 }
 format++;
 }
+
 va_end(args);
 return count;
 }
-}
+
