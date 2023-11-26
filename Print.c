@@ -27,7 +27,7 @@ if (len == -1)
 {
 return (-1);
 }
-return len;
+return (len);
 }
 else
 {
@@ -58,7 +58,7 @@ int count = 0;
 va_list args;
 va_start(args, format);
 if (format == NULL)
-return write(1, NULL, 1);
+return (write(1, NULL, 1));
 while (*format != '\0')
 {
 if (*format == '%')
@@ -81,18 +81,15 @@ count += _write_int(va_arg(args, int));
 break;
 case '\0':
 count = write(1, NULL, 1);
-return count;
+return (count);
 default:
 count += write(1, format - 1, 2);
 }
 }
 else
-{
 count += write(1, format, 1);
-}
 format++;
 }
-
 va_end(args);
 return count;
 }
