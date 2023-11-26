@@ -70,6 +70,7 @@ count += write(1, format, 1);
 format++;
 }
 va_end(args);
-}
 return count;
+}
+return (0);
 }
