@@ -14,15 +14,15 @@ return write(1, &c, 1);
 }
 
 /**
-* _write_string - writes a string to stdout
-* @str: string to write
-* Return: number of characters written
-*/
+ * _write_string - writes a string to stdout
+ * @str: string to write
+ * Return: number of characters written
+ */
 int _write_string(char *str)
 {
 if (str != NULL)
 {
-int len = write(1, str, strlen(str));
+int len = write(1, str, _strlen(str));
 if (len == -1)
 {
 return -1;
@@ -36,10 +36,10 @@ return write(1, "(null)", 6);
 }
 
 /**
-* _write_int - writes an integer to stdout
-* @num: integer to write
-* Return: number of characters written
-*/
+ * _write_int - writes an integer to stdout
+ * @num: integer to write
+ * Return: number of characters written
+ */
 int _write_int(int num)
 {
 char buffer[50];
@@ -48,10 +48,10 @@ return write(1, buffer, len);
 }
 
 /**
-* _printf - print formatted string.
-* @format: format to use.
-* Return: number of characters printed
-*/
+ * _printf - print formatted string.
+ * @format: format to use.
+ * Return: number of characters printed
+ */
 int _printf(const char *format, ...)
 {
 int count = 0;
@@ -100,3 +100,4 @@ va_end(args);
 return count;
 }
 }
+
