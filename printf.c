@@ -15,8 +15,8 @@ int num, len;
 char buffer[50];
 if (format == NULL)
 {
-write(1,NULL,1);
-return;
+count = write(1,NULL,1);
+return count;
 }
 else
 {
