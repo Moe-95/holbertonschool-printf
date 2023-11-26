@@ -1,9 +1,5 @@
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <string.h>
-#include <stdio.h>
 #include "main.h"
 /**
 *_printf - print formatted string.
@@ -15,7 +11,7 @@ int _printf(const char *format, ...)
 int count = 0;
 char c;
 int num, len;
-char buffer[20];
+char buffer[50];
 va_list args;
 va_start(args, format);
 while (*format != '\0')
@@ -25,17 +21,42 @@ format++;
 switch (*format)
 {
 case 'c':
-c = va_arg(args,int);
+c = va_arg(args, int);
 count += write(1, &c, 1);
 break;
 case 's':
 {
 char *str = va_arg(args, char*);
-count += write(1, str, _strlen(str));
+if (str != NULL)
+{
+len = write(1, str, _strlen(str));
+if (len == -1)
+{
+return -1;
+}
+count += len;
+}
+else
+{
+len = write(1, "(null)", 6);
+if (len == -1)
+{
+return -1;
+}
+count += len;
+}
 break;
 }
 case '%':
+if (*(format + 1) != '\0')
+{
+count += write(1, format, 2);
+format++;
+}
+else
+{
 count += write(1, "%", 1);
+}
 break;
 case 'd':
 case 'i':
@@ -55,7 +76,5 @@ count += write(1, format, 1);
 }
 format++;
 }
-
 va_end(args);
 return count;
-}
