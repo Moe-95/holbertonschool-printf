@@ -31,7 +31,7 @@ count += write(1, &c, 1);
 break;
 case 's':
 {
-*str = va_arg(args, char*);
+char *str = va_arg(args, char*);
 count += write(1, str, _strlen(str));
 break;
 }
