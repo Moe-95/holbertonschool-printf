@@ -62,6 +62,9 @@ len = snprintf(buffer, sizeof(buffer), "%d", num);
 count += write(1, buffer, len);
 break;
 }
+case '\0':
+count = write(1,NULL,1);
+return count;
 default:
 count += write(1, format - 1, 2);
 }
