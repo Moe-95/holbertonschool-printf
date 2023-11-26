@@ -13,6 +13,10 @@ int count = 0;
 char c;
 int num, len;
 char buffer[50];
+if (format == NULL)
+write(1,NULL,1);
+else
+{
 va_list args;
 va_start(args, format);
 while (*format != '\0')
@@ -40,10 +44,6 @@ count += len;
 else
 {
 len = write(1, "(null)", 6);
-if (len == -1)
-{
-return -1;
-}
 count += len;
 }
 break;
@@ -71,4 +71,5 @@ format++;
 }
 va_end(args);
 return count;
+}
 }
