@@ -49,15 +49,7 @@ count += len;
 break;
 }
 case '%':
-if (*(format + 1) != '\0')
-{
-count += write(1, format, 2);
-format++;
-}
-else
-{
 count += write(1, "%", 1);
-}
 break;
 case 'd':
 case 'i':
