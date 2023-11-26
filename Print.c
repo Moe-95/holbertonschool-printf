@@ -55,13 +55,10 @@ return (write(1, buffer, len));
 int _printf(const char *format, ...)
 {
 int count = 0;
-
-if (format == NULL)
-return write(1, NULL, 1);
-
 va_list args;
 va_start(args, format);
-
+if (format == NULL)
+return write(1, NULL, 1);
 while (*format != '\0')
 {
 if (*format == '%')
